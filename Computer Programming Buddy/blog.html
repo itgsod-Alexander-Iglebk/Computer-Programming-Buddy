@@ -1,0 +1,273 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8">
+	<title>Blog - Computer Programming Buddy CPD</title>
+	<link rel="stylesheet" href="css/style.css" type="text/css">
+	<!--[if IE]>
+		<link rel="stylesheet" href="css/ie.css" type="text/css" charset="utf-8">
+	<![endif]-->
+    <meta name="keywords" content="example, JavaScript Form Validation, Sample registration form" />
+    <meta name="description" content="This document is an example of JavaScript Form Validation using a sample registration form. " />
+    <link rel='stylesheet' href='js-form-validation.css' type='text/css' />
+    <script src="sample-registration-form-validation.js"></script>
+    <script type="text/javascript">
+    function formValidation()
+    {
+        var uid = document.registration.userid;
+        var passid = document.registration.passid;
+        var uname = document.registration.username;
+        var uadd = document.registration.address;
+        var ucountry = document.registration.country;
+        var uzip = document.registration.zip;
+        var uemail = document.registration.email;
+        var umsex = document.registration.msex;
+        var ufsex = document.registration.fsex; if(userid_validation(uid,5,12))
+    {
+        if(passid_validation(passid,7,12))
+        {
+            if(allLetter(uname))
+            {
+                if(alphanumeric(uadd))
+                {
+                    if(countryselect(ucountry))
+                    {
+                        if(allnumeric(uzip))
+                        {
+                            if(ValidateEmail(uemail))
+                            {
+                                if(validsex(umsex,ufsex))
+                                {
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+        return false;
+
+    } function userid_validation(uid,mx,my)
+    {
+        var uid_len = uid.value.length;
+        if (uid_len == 0 || uid_len >= my || uid_len < mx)
+        {
+            alert("User Id should not be empty / length be between "+mx+" to "+my);
+            uid.focus();
+            return false;
+        }
+        return true;
+    }
+    function passid_validation(passid,mx,my)
+    {
+        var passid_len = passid.value.length;
+        if (passid_len == 0 ||passid_len >= my || passid_len < mx)
+        {
+            alert("Password should not be empty / length be between "+mx+" to "+my);
+            passid.focus();
+            return false;
+        }
+        return true;
+    }
+    function allLetter(uname)
+    {
+        var letters = /^[A-Za-z]+$/;
+        if(uname.value.match(letters))
+        {
+            return true;
+        }
+        else
+        {
+            alert('Username must have alphabet characters only');
+            uname.focus();
+            return false;
+        }
+    }
+    function alphanumeric(uadd)
+    {
+        var letters = /^[0-9a-zA-Z]+$/;
+        if(uadd.value.match(letters))
+        {
+            return true;
+        }
+        else
+        {
+            alert('User address must have alphanumeric characters only');
+            uadd.focus();
+            return false;
+        }
+    }
+    function countryselect(ucountry)
+    {
+        if(ucountry.value == "Default")
+        {
+            alert('Select your country from the list');
+            ucountry.focus();
+            return false;
+        }
+        else
+        {
+            return true;
+        }
+    }
+    function allnumeric(uzip)
+    {
+        var numbers = /^[0-9]+$/;
+        if(uzip.value.match(numbers))
+        {
+            return true;
+        }
+        else
+        {
+            alert('ZIP code must have numeric characters only');
+            uzip.focus();
+            return false;
+        }
+    }
+    function ValidateEmail(uemail)
+    {
+        var mailformat = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/;
+        if(uemail.value.match(mailformat))
+        {
+            return true;
+        }
+        else
+        {
+            alert("You have entered an invalid email address!");
+            uemail.focus();
+            return false;
+        }
+    } function validsex(umsex,ufsex)
+    {
+        x=0;
+
+        if(umsex.checked)
+        {
+            x++;
+        } if(ufsex.checked)
+    {
+        x++;
+    }
+        if(x==0)
+        {
+            alert('Select Male/Female');
+            umsex.focus();
+            return false;
+        }
+        else
+        {
+            alert('Form Succesfully Submitted');
+            window.location.reload()
+            return true;
+        }
+    }
+</script>
+</head>
+<body>
+	<div id="background">
+		<div id="page">
+			<div id="header">
+				<ul id="navigation">
+					<li>
+						<a href="index.html">Hem</a>
+					</li>
+					<li>
+						<a href="programs.html">Program</a>
+					</li>
+					<li>
+						<a href="events.html">Nytt</a>
+					</li>
+
+					<li>
+						<a href="about.html">Om oss</a>
+					</li>
+
+				</ul>
+				<div id="logo">
+					<a href="index.html">Computer Programming Buddy</a>
+				</div>
+			</div>
+			<div id="contents">
+                <div id="sidebar">
+                    <h2>Nytt!</h2>
+                    <div>
+                        <div class="section">
+                            <div class="body">
+                                <h5><a href="blog.html"></a>Nya personal!</h5>
+                                <p>
+                                    Exklusivt! Vi har börjat anställa nya personal, om du är intresserad kontakta oss!
+
+                                </p>
+                                <span>Mars 01, 2015</span> <span class="author"></span>
+                            </div>
+                        </div>
+                        <div class="section">
+                            <div class="body">
+                                <h5><a href="blog.html">Computer Programming Buddy</a></h5>
+                                <img src="images/logoss.jpg" alt="Img" height="60" width="80">
+
+                                <p>
+                                    Nu är Computer Programming Buddy äntligen igång över hela Stockholm!
+
+                                </p>
+                                <span>Mars 01, 2015</span> <span class="author"></span>
+                            </div>
+                        </div>
+                    </div>
+                    <span><a href="blog.html" class="more">Alla nyheter</a></span>
+                </div>
+				<div id="blog">
+
+
+                </div>
+				</div>
+			</div>
+			<div id="footer">
+				<div>
+					<ul>
+						<li>
+							<h4>Om oss</h4>
+							<p>
+                                Vi i Computer Programming Buddy är ett företag som försöker få alla individer där ute, i alla ålder att lära sig framtidens språk. Med denna kunskap kan ni skapa allting inom datorns värld från att programmera egna program till att göra egna appar!    <a href="about.html">(Läs mer)</a>
+                            </p>
+						</li>
+						<li>
+							<h4>Länkar</h4>
+							<ul class="navigation">
+								<li>
+									<a href="index.html">Hem</a>
+								</li>
+								<li>
+									<a href="blog.html">Undervisningar</a>
+								</li>
+								<li>
+									<a href="programs.html">Program</a>
+								</li>
+								<li>
+									<a href="about.html">Om oss</a>
+								</li>
+								<li>
+									<a href="events.html">Nytt</a>
+								</li>
+								<li>
+									<a href="contact.html">Kontakt</a>
+								</li>
+							</ul>
+						</li>
+						<li>
+							<h4>Följ oss här</h4>
+							<div id="connect">
+								<a href="http://.com/go/twitter/" target="_blank" class="twitter">Twitter</a><a href="http://.com/go/facebook/" target="_blank" class="facebook">Facebook</a>
+							</div>
+						</li>
+					</ul>
+					<p id="footnote">
+						© Copyright 2015. All rights reserved.
+					</p>
+				</div>
+			</div>
+		</div>
+	</div>
+</body>
+</html>
